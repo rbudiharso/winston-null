@@ -1,0 +1,25 @@
+{
+  "name": "winston-null",
+  "version": "1.0.0",
+  "description": "Null Logger transport for winston, it basically swallow all your log so nothing is logged, good for test environment.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "keywords": [
+    "winston",
+    "null",
+    "logger",
+    "winston",
+    "transport"
+  ],
+  "author": "Rahmat Budiharso <rbudiharso@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "winston": "^1.0.1"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "rewire": "^2.3.4"
+  }
+}
