@@ -1,0 +1,96 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/rbudiharso/.nvm/versions/node/v0.12.7/bin/node',
+1 verbose cli   '/home/rbudiharso/.nvm/versions/node/v0.12.7/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@2.11.3
+3 info using node@v0.12.7
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec { raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/home/rbudiharso/Projects/hobbies/winston-null',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /home/rbudiharso/.npm/winston-null/1.0.0/package.tgz not in flight; packing
+9 verbose tar pack [ '/home/rbudiharso/.npm/winston-null/1.0.0/package.tgz',
+9 verbose tar pack   '/home/rbudiharso/Projects/hobbies/winston-null' ]
+10 verbose tarball /home/rbudiharso/.npm/winston-null/1.0.0/package.tgz
+11 verbose folder /home/rbudiharso/Projects/hobbies/winston-null
+12 info prepublish winston-null@1.0.0
+13 verbose addLocalTarball adding from inside cache /home/rbudiharso/.npm/winston-null/1.0.0/package.tgz
+14 silly cache afterAdd winston-null@1.0.0
+15 verbose afterAdd /home/rbudiharso/.npm/winston-null/1.0.0/package/package.json not in flight; writing
+16 verbose afterAdd /home/rbudiharso/.npm/winston-null/1.0.0/package/package.json written
+17 silly publish { name: 'winston-null',
+17 silly publish   version: '1.0.0',
+17 silly publish   description: 'Null Logger transport for winston, it basically swallow all your log so nothing is logged, good for test environment.',
+17 silly publish   main: 'index.js',
+17 silly publish   scripts: { test: 'mocha test' },
+17 silly publish   repository:
+17 silly publish    { type: 'git',
+17 silly publish      url: 'git+https://github.com/rbudiharso/winston-null.git' },
+17 silly publish   keywords: [ 'winston', 'null', 'logger', 'winston', 'transport' ],
+17 silly publish   author: { name: 'Rahmat Budiharso', email: 'rbudiharso@gmail.com' },
+17 silly publish   license: 'ISC',
+17 silly publish   dependencies: { winston: '^1.0.1' },
+17 silly publish   devDependencies: { chai: '^3.2.0', rewire: '^2.3.4' },
+17 silly publish   readme: '# winston-null\nNull Logger transport for winston, it basically swallow all your logs so nothing is logged, good for test environment.\n\n## Usage\n\n~~~\nvar winston = require(\'winston\');\nvar NullTransport = require(\'winston-null\');\nwinston.add(NullTransport);\n\n// after this all of your log will be lost\n~~~\n\n## Development\n\n~~~\ngit clone https://github.com/rbudiharso/winston-null.git\ncd winston-null\nnpm install\nnpm test\n~~~\n',
+17 silly publish   readmeFilename: 'README.md',
+17 silly publish   gitHead: '117745b69e17b00f03443b910e9ec7702c7bb293',
+17 silly publish   bugs: { url: 'https://github.com/rbudiharso/winston-null/issues' },
+17 silly publish   homepage: 'https://github.com/rbudiharso/winston-null#readme',
+17 silly publish   _id: 'winston-null@1.0.0',
+17 silly publish   _shasum: '0a81d6746dc441bb7a67478a5624f327639499e0',
+17 silly publish   _from: '.' }
+18 verbose getPublishConfig undefined
+19 silly mapToRegistry name winston-null
+20 silly mapToRegistry using default registry
+21 silly mapToRegistry registry https://registry.npmjs.org/
+22 silly mapToRegistry uri https://registry.npmjs.org/winston-null
+23 verbose publish registryBase https://registry.npmjs.org/
+24 silly publish uploading /home/rbudiharso/.npm/winston-null/1.0.0/package.tgz
+25 verbose request uri https://registry.npmjs.org/winston-null
+26 verbose request sending authorization for write operation
+27 info attempt registry request try #1 at 1:44:36 PM
+28 verbose request using bearer token for auth
+29 verbose request id cd848390f91dc6e0
+30 http request PUT https://registry.npmjs.org/winston-null
+31 http 403 https://registry.npmjs.org/winston-null
+32 verbose headers { 'content-type': 'application/json',
+32 verbose headers   'cache-control': 'max-age=60',
+32 verbose headers   'content-length': '95',
+32 verbose headers   'accept-ranges': 'bytes',
+32 verbose headers   date: 'Mon, 21 Sep 2015 06:44:48 GMT',
+32 verbose headers   via: '1.1 varnish',
+32 verbose headers   connection: 'keep-alive',
+32 verbose headers   'x-served-by': 'cache-sin6926-SIN',
+32 verbose headers   'x-cache': 'MISS',
+32 verbose headers   'x-cache-hits': '0',
+32 verbose headers   'x-timer': 'S1442817885.939756,VS0,VE2435' }
+33 verbose request invalidating /home/rbudiharso/.npm/registry.npmjs.org/winston-null on PUT
+34 error publish Failed PUT 403
+35 verbose stack Error: "You cannot publish over the previously published version 1.0.0." : winston-null
+35 verbose stack     at CachingRegistryClient.<anonymous> (/home/rbudiharso/.nvm/versions/node/v0.12.7/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:247:14)
+35 verbose stack     at Request._callback (/home/rbudiharso/.nvm/versions/node/v0.12.7/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:170:14)
+35 verbose stack     at Request.self.callback (/home/rbudiharso/.nvm/versions/node/v0.12.7/lib/node_modules/npm/node_modules/request/request.js:354:22)
+35 verbose stack     at Request.emit (events.js:110:17)
+35 verbose stack     at Request.<anonymous> (/home/rbudiharso/.nvm/versions/node/v0.12.7/lib/node_modules/npm/node_modules/request/request.js:1207:14)
+35 verbose stack     at Request.emit (events.js:129:20)
+35 verbose stack     at IncomingMessage.<anonymous> (/home/rbudiharso/.nvm/versions/node/v0.12.7/lib/node_modules/npm/node_modules/request/request.js:1153:12)
+35 verbose stack     at IncomingMessage.emit (events.js:129:20)
+35 verbose stack     at _stream_readable.js:908:16
+35 verbose stack     at process._tickCallback (node.js:355:11)
+36 verbose statusCode 403
+37 verbose pkgid winston-null
+38 verbose cwd /home/rbudiharso/Projects/hobbies/winston-null
+39 error Linux 3.16.0-49-generic
+40 error argv "/home/rbudiharso/.nvm/versions/node/v0.12.7/bin/node" "/home/rbudiharso/.nvm/versions/node/v0.12.7/bin/npm" "publish"
+41 error node v0.12.7
+42 error npm  v2.11.3
+43 error code E403
+44 error "You cannot publish over the previously published version 1.0.0." : winston-null
+45 error If you need help, you may report this error at:
+45 error     <https://github.com/npm/npm/issues>
+46 verbose exit [ 1, true ]
