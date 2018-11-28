@@ -22,13 +22,18 @@
   ],
   "author": "Rahmat Budiharso <rbudiharso@gmail.com>",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "semver": "^5.6.0",
+    "winston-compat": "^0.1.4",
+    "winston-transport": "^4.2.0"
+  },
   "devDependencies": {
     "chai": "^3.2.0",
     "rewire": "^2.3.4",
-    "winston": "^1.1.2"
+    "sinon": "^7.1.1",
+    "winston": "^3.1.0"
   },
   "peerDependencies": {
-    "winston": "^1.0.0"
+    "winston": ">=2.0.0"
   }
 }
