@@ -11,9 +11,12 @@ class NullTransport extends Transport {
     this.name = 'NullTransport';
   }
 
-  log(...args) { // in winston >= 3 and winston < 3 callback is the last argument
+  log(...args) {
+    // in winston >= 3 and winston < 3 callback is the last argument
     const callback = args[args.length - 1];
     callback();
+
+    return this;
   }
 }
 

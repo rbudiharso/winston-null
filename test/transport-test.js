@@ -1,37 +1,41 @@
 const { expect } = require('chai');
 const rewire = require('rewire');
 const { spy } = require('sinon');
+
 let NullTransport;
 let winston;
 
-describe("NullTransport", function () {
+function removeConsole() {
+  if (winston.transports.Console) winston.remove(winston.transports.Console);
+}
 
-  before(function(){
-    winston = require('winston');
-    expect(winston.transports).to.not.have.ownProperty("NullTransport");
-    NullTransport = require('../index').NullTransport;
-    expect(winston.transports).to.have.ownProperty("NullTransport");
+describe('NullTransport', () => {
+  before(() => {
+    winston = require('winston'); // eslint-disable-line global-require
+    expect(winston.transports).to.not.have.ownProperty('NullTransport');
+    ({ NullTransport } = require('../index')); // eslint-disable-line global-require
+    expect(winston.transports).to.have.ownProperty('NullTransport');
     removeConsole();
   });
 
-  it('should exist', function () {
-    expect(NullTransport).to.exist;
-    expect(NullTransport).to.be.a("function");
+  it('should exist', () => {
+    expect(NullTransport).to.exist();
+    expect(NullTransport).to.be.a('function');
   });
 
-  it('should be able to add it as a transport', function () {
+  it('should be able to add it as a transport', () => {
     const transport = new NullTransport();
     winston.add(transport);
     winston.remove(transport);
   });
 
-  it('should have NullTransport available as a transport', function () {
-    expect(winston.transports).to.have.ownProperty("NullTransport");
+  it('should have NullTransport available as a transport', () => {
+    expect(winston.transports).to.have.ownProperty('NullTransport');
   });
 
-  it('should not write anything', function () {
+  it('should not write anything', () => {
     const transport = new (rewire('../index').NullTransport)();
-    const msg = "hi there";
+    const msg = 'hi there';
 
     spy(transport, 'log');
 
@@ -43,10 +47,4 @@ describe("NullTransport", function () {
 
     transport.log.restore();
   });
-
-  function removeConsole () {
-    if (winston.transports.Console) winston.remove(winston.transports.Console);
-  }
-
 });
-
