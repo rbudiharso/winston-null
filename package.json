@@ -3,6 +3,9 @@
   "version": "1.0.2",
   "description": "Null Logger transport for winston, it basically swallow all your log so nothing is logged, good for test environment.",
   "main": "index.js",
+  "engines": {
+    "node": ">=6"
+  },
   "scripts": {
     "test": "mocha test"
   },

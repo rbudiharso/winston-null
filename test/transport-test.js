@@ -1,7 +1,7 @@
-var expect = require('chai').expect;
-var rewire = require('rewire');
-var transport;
-var winston;
+const { expect } = require('chai');
+const rewire = require('rewire');
+let transport;
+let winston;
 
 describe("NullTransport", function () {
 
@@ -29,7 +29,7 @@ describe("NullTransport", function () {
 
   it('should not write anything', function (done) {
     transport = rewire('../index').NullTransport;
-    var msg = "hi there";
+    const msg = "hi there";
 
     winston.add(transport);
     winston.log('info', msg, null, function(err) {

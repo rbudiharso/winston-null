@@ -1,12 +1,17 @@
-var util = require('util'),
-winston = require('winston');
+const { Transport, transports } = require('winston');
 
-var NullTransport = exports.NullTransport = function() {};
+class NullTransport extends Transport {
+  constructor(opts) {
+    super(opts);
 
-util.inherits(NullTransport, winston.Transport);
-winston.transports.NullTransport = NullTransport;
+    this.name = 'NullTransport';
+  }
 
-NullTransport.prototype.name = 'NullTransport';
-NullTransport.prototype.log = function(level, msg, meta, callback) {
-  callback(null);
-};
+  log(...args) { // in winston >= 3 and winston < 3 callback is the last argument
+    const callback = args[args.length - 1];
+    callback(null);
+  }
+}
+
+transports.NullTransport = NullTransport;
+module.exports.NullTransport = NullTransport;
