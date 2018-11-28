@@ -8,7 +8,7 @@ describe("NullTransport", function () {
   before(function(){
     winston = require('winston');
     expect(winston.transports).to.not.have.ownProperty("NullTransport");
-    transport = require('../index');
+    transport = require('../index').NullTransport;
     expect(winston.transports).to.have.ownProperty("NullTransport");
     removeConsole();
   });
@@ -28,7 +28,7 @@ describe("NullTransport", function () {
   });
 
   it('should not write anything', function (done) {
-    transport = rewire('../index');
+    transport = rewire('../index').NullTransport;
     var msg = "hi there";
 
     winston.add(transport);
