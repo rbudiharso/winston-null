@@ -6,10 +6,10 @@
   "scripts": {
     "test": "mocha test"
   },
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/rbudiharso/winston-null"
-	},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rbudiharso/winston-null"
+  },
   "keywords": [
     "winston",
     "null",
@@ -19,11 +19,13 @@
   ],
   "author": "Rahmat Budiharso <rbudiharso@gmail.com>",
   "license": "ISC",
-  "dependencies": {
-    "winston": "^1.0.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "chai": "^3.2.0",
-    "rewire": "^2.3.4"
+    "rewire": "^2.3.4",
+    "winston": "^1.1.2"
+  },
+  "peerDependencies": {
+    "winston": "^1.0.0"
   }
 }
