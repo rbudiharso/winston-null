@@ -1,21 +1,18 @@
+const { transports, version } = require('winston');
 const { expect } = require('chai');
 const rewire = require('rewire');
 const { spy } = require('sinon');
+const semver = require('semver');
+
+const { createLogger, addTransport } = require('./utils.js');
 
 let NullTransport;
-let winston;
-
-function removeConsole() {
-  if (winston.transports.Console) winston.remove(winston.transports.Console);
-}
 
 describe('NullTransport', () => {
   before(() => {
-    winston = require('winston'); // eslint-disable-line global-require
-    expect(winston.transports).to.not.have.ownProperty('NullTransport');
+    expect(transports).to.not.have.ownProperty('NullTransport');
     ({ NullTransport } = require('../index')); // eslint-disable-line global-require
-    expect(winston.transports).to.have.ownProperty('NullTransport');
-    removeConsole();
+    expect(transports).to.have.ownProperty('NullTransport');
   });
 
   it('should exist', () => {
@@ -24,27 +21,33 @@ describe('NullTransport', () => {
   });
 
   it('should be able to add it as a transport', () => {
-    const transport = new NullTransport();
-    winston.add(transport);
-    winston.remove(transport);
+    const logger = createLogger();
+
+    addTransport(logger, NullTransport);
   });
 
   it('should have NullTransport available as a transport', () => {
-    expect(winston.transports).to.have.ownProperty('NullTransport');
+    expect(transports).to.have.ownProperty('NullTransport');
   });
 
   it('should not write anything', () => {
-    const transport = new (rewire('../index').NullTransport)();
+    const Null = rewire('../index').NullTransport;
+    spy(Null.prototype, 'log');
+
+    const logger = createLogger();
     const msg = 'hi there';
 
-    spy(transport, 'log');
+    addTransport(logger, Null);
+    logger.log('info', msg);
 
-    winston.add(transport);
-    winston.log('info', msg);
+    expect(Null.prototype.log.callCount).to.equal(1);
 
-    expect(transport.log.callCount).to.equal(1);
-    expect(transport.log.firstCall.args[0].message).to.equal(msg);
+    if (semver.major(version) < 3) {
+      expect(Null.prototype.log.firstCall.args[1]).to.equal(msg);
+    } else {
+      expect(Null.prototype.log.firstCall.args[0].message).to.equal(msg);
+    }
 
-    transport.log.restore();
+    Null.prototype.log.restore();
   });
 });
