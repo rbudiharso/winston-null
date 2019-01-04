@@ -1,12 +1,24 @@
-var util = require('util'),
-winston = require('winston');
+const winston = require('winston');
+const compat = require('winston-compat');
+const semver = require('semver');
 
-var NullTransport = exports.NullTransport = function() {};
+const Transport = semver.major(winston.version) === 2 ? compat.Transport : require('winston-transport');
 
-util.inherits(NullTransport, winston.Transport);
+class NullTransport extends Transport {
+  constructor(opts) {
+    super(opts);
+
+    this.name = 'NullTransport';
+  }
+
+  log(...args) {
+    // in winston >= 3 and winston < 3 callback is the last argument
+    const callback = args[args.length - 1];
+    callback();
+
+    return this;
+  }
+}
+
 winston.transports.NullTransport = NullTransport;
-
-NullTransport.prototype.name = 'NullTransport';
-NullTransport.prototype.log = function(level, msg, meta, callback) {
-  callback(null);
-};
+module.exports.NullTransport = NullTransport;
