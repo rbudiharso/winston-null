@@ -5,8 +5,8 @@ Null Logger transport for winston, it basically swallow all your logs so nothing
 
 ~~~
 var winston = require('winston');
-var NullTransport = require('winston-null');
-winston.add(NullTransport);
+var { NullTransport } = require('winston-null');
+winston.add(new NullTransport());
 
 // after this all of your log will be lost
 ~~~
